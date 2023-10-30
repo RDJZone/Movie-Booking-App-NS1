@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The MoviAPP-Payment</title>
+    <style>
+        /* Reset CSS and general styles */
+        body, ::after, ::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            height: 94vh;
+            width: 95vw;
+        }
+
+        /* Header styles */
+        header {
+            height: 8vh;
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            column-gap: 5%;
+        }
+        #backBtn {
+            height: 50%;
+            width: 8%;
+            font-size: 80%;
+            background-color: blue;
+            color: white;
+            border-radius: 8px;
+            border: none;
+        }
+        header h1 {
+            width: 85%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Main content container styles */
+        .body-container {
+            display: grid;
+            grid-template: 1fr / 1fr 3fr;
+            gap: 5%;
+            width: 90vw;
+            height: 80vh;
+        }
+
+        /* Summary container styles */
+        .summary-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5%;
+            height: 100%;
+            padding: 10px;
+        }
+        .summary {
+            width: 100%;
+            border: thin solid hsl(210, 85%, 45%);
+            border-radius: 8px;
+            height: 80%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10%;
+        }
+        .summary input {
+            border-radius: 4px;
+            border: thin solid hsl(210, 85%, 45%);
+        }
+        .movieDetails-summary, .ticketDetails-summary, .convenienceFee-summary, .totalAmount-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .ticketDetails-summary input {
+            width: 40%;
+        }
+
+        /* Payment container styles */
+        .payment-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 10%;
+            height: 100%;
+            padding: 10px;
+            border: thin solid hsl(210, 85%, 45%);
+            border-radius: 8px;
+        }
+        .customer-details {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 5%;
+            height: 15%;
+            padding: 10px;
+        }
+        .customer-details input {
+            width: 17%;
+            border-radius: 6px;
+            border: thin solid hsl(210, 85%, 45%);
+            height: 50%;
+        }
+        form {
+            height: 85%;
+            width: 100%;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 2%;
+            height: 7%;
+        }
+        .payment-details {
+            width: 100%;
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            margin-left: 5px;
+        }
+        .payment-details input {
+            width: 25%;
+            height: 8%;
+            border-radius: 5px;
+            border: thin solid hsl(210, 85%, 45%);
+        }
+        #pay {
+            background-color: blue;
+            color: white;
+            width: 99%;
+            height: 6%;
+            border-radius: 8px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button onclick="window.location.href='index.html'" id="backBtn">
+            Back
+        </button>
+        <h1 title="checkout">Checkout</h1>
+    </header>
+    <div class="body-container">
+        <div class="summary-container">
+            <section class="summary">
+                <h2 title="summary">Summary</h2>
+                <div class="movieDetails-summary">
+                    <div class="selectedMovieName">The Whale</div>
+                    <div class="selectedMoviePrice">Rs 250</div>
+                </div>
+                <div class="ticketDetails-summary">
+                    <label for="noOfTickets">Number of Tickets</label>
+                    <input type="number" id="noOfTickets" value="1" required />
+                </div>
+                <div class="convenienceFee-summary">
+                    <div>Convenience Fee (1.75%)</div>
+                    <div class="convenienceFee">Rs 8.75</div>
+                    <div>GST Fee (5%)</div>
+                    <div class="gst">Rs 8.75</div>
+                </div>
+                <div class="totalAmount-summary">
+                    <div>Sub Total</div>
+                    <div class="totalFee">Rs 508.75</div>
+                </div>
+            </section>
+        </div>
+        <div class="payment-container">
+            <h2>Payment</h2>
+            <form>
+                <div class="customer-details">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" required />
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" required />
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required />
+                </div>
+                <div class="payment-methods">
+                    <label for="creditCard">Credit Card</label>
+                    <input type="radio" name="payment-method" id="creditCard" checked />
+                    <label for="debitCard">Debit Card</label>
+                    <input type="radio" name="payment-method" id="debitCard" />
+                    <label for="upi">UPI</label>
+                    <input type="radio" name="payment-method" id="upi" />
+                </div>
+                <div class="payment-details">
+                    <label for="cardname">Name on Card</label>
+                    <input type="text" id="cardname" required />
+                    <label for="cardNo">Card Number</label>
+                    <input type="number" id="cardNo" required />
+                    <label for="expiration">Expiration</label>
+                    <input type="date" id="expiration" required />
+                    <input type="number" placeholder="CVV" required />
+                    <input type="text" placeholder="UPI ID: abc@abcab" required />
+                    <button id="verify">Verify</button>
+                </div>
+                <button id="pay">Proceed to Pay</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load", () => {
+            showBookedMovieDetails(
+                localStorage.getItem("price"),
+                localStorage.getItem("original_title")
+            );
+            let tickets = document.getElementById("noOfTickets");
+            tickets.addEventListener("input", (e) => {
+                console.log("input changed");
+                showBookedMovieDetails(
+                    localStorage.getItem("price"),
+                    localStorage.getItem("original_title"),
+                    e.currentTarget.value
+                );
+            });
+        });
+
+        function showBookedMovieDetails(price, title, noOfTickets = 1) {
+            const selectedMovieName = document.querySelector(".selectedMovieName");
+            const selectedMoviePrice = document.querySelector(".selectedMoviePrice");
+            const convenienceFee = document.querySelector(".convenienceFee");
+            const gstFee = document.querySelector(".gst");
+            const totalFee = document.querySelector(".totalFee");
+            const paytoProceed = document.getElementById("pay");
+            price = Number(price);
+            noOfTickets = Number(noOfTickets);
+            let basePrice = noOfTickets * price;
+            convenienceFee.innerHTML = `Rs ${(0.0175 * basePrice).toFixed(2)}`;
+            gstFee.innerHTML = `Rs ${(0.05 * basePrice).toFixed(2)}`;
+            totalFee.innerHTML = `Rs ${(1.0675 * basePrice).toFixed(2)}`;
+            selectedMovieName.innerHTML = title;
+            selectedMoviePrice.innerHTML = price;
+            paytoProceed.innerHTML = `Proceed to Pay Rs ${(1.0175 * basePrice).toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
